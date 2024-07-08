@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="card.css">
+  <title>Card Payment</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Card Payment</h1>
+    <div class="card">
+      <div class="card__front">
+        <div class="card__chip"></div>
+        <div class="card__number"></div>
+        <div class="card__name"></div>
+        <div class="card__expiry"></div>
+      </div>
+      <div class="card__back">
+        <div class="card__bar"></div>
+        <div class="card__cvv"></div>
+      </div>
+    </div>
+    <form id="paymentForm" method="POST">
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" maxlength="16" required>
+      </div>
+      <div class="form-group">
+        <label for="cardName">Cardholder Name</label>
+        <input type="text" id="cardName" required>
+      </div>
+      <div class="form-group">
+        <label for="expiryDate">Expiry Date</label>
+        <input type="text" id="expiryDate" maxlength="5" required>
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" maxlength="3" required>
+      </div>
+      <button type="submit">Pay Now</button>
+    </form>
+    <div id="successMessage">
+      <h2>Payment Successful!</h2>
+      <p>Thank you for your purchase.</p>
+    </div>
+  </div>
+
+  <script src="card.js"></script>
+</body>
+</html>

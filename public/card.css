@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.card {
+  position: relative;
+  width: 350px;
+  height: 220px;
+  margin: 0 auto;
+  perspective: 1000px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card:hover {
+  transform: rotateY(180deg);
+}
+
+.card__front,
+.card__back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card__front {
+  background-color: #007bff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__back {
+  background-color: #f0f8ff;
+  border-radius: 10px;
+  transform: rotateY(180deg);
+}
+
+.card__chip {
+  width: 50px;
+  height: 40px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.card__number {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.card__name,
+.card__expiry,
+.card__cvv {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  color: #666;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#successMessage {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f0f8ff;
+  border-radius: 5px;
+  color: #008000;
+  animation: fadeOut 5s ease-in;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}

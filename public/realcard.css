@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+*{
+    font-family:'Poppins', sans-serif;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    /* overflow-y: hidden; */
+    /* overflow-x: hidden; */
+}
+.cover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #0000001a;
+}
+.cover div{
+    position: absolute;
+    width: 35%;
+    height: 40%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    background: white;
+    border-radius: 10px;
+}
+.cover div div{
+    position: absolute;
+    width: 85%;
+    height: 40%;
+    left: 50%;
+    top: 60%;
+    margin: auto;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+.cover div div .btn2{
+    border: 2px solid gray;
+}
+.contain{
+    min-height: 100vh;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    display: none;
+    margin-bottom: 60px;
+    width: 100%;
+}
+.contain form{
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 10px 15px rgba(0,0,0,.1);
+    padding: 20px;
+    width: 43%;
+    margin: auto;
+    padding-top: 160px;
+}
+.contain form .inputBox{
+    margin-top: 15px;
+}
+.contain form .inputBox span{
+    display: block;
+    color: #999;
+    padding-bottom: 5px;
+}
+.contain form .inputBox input,
+.contain form .inputBox select{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,.3);
+    color: #444;
+}
+.contain form .flexbox{
+    display: flex;
+    gap: 15px;   
+}
+.contain form .flexbox .inputBox{
+    flex: 1 1 150px;
+}
+.contain form .submit-btn{
+    background: linear-gradient(45deg, blueviolet, deeppink);
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: .2s linear;
+}
+.contain form .submit-btn:hover{
+    letter-spacing: 2px;
+    opacity: .8;
+}
+.contain .card-contain{
+    margin: auto;
+    margin-bottom: -150px;
+    position: relative;
+    height: 250px;
+    width: 33%;
+}
+.contain .card-contain .front{
+    padding: 20px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg, blueviolet, deeppink);
+    top: 0;left: 0;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 45px rgba(0,0,0,.2);
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform .4s ease-out;
+} 
+.contain .card-contain .front .image{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+.contain .card-contain .front .image img{
+    height: 50px;
+}
+.contain .card-contain .front .card-number-box{
+    padding: 30px 0;
+    font-size: 22px;
+    color: #fff;
+}
+.contain .card-contain .front .flexbox{
+    display: flex;
+}
+.contain .card-contain .front .flexbox .box:nth-child(1){
+    margin-right: auto;
+}
+.contain .card-contain .front .flexbox .box{
+    font-size: 15px;
+    color: #fff;
+}
+.contain .card-contain .back{
+    position: absolute;
+    top: 0;left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg, blueviolet, deeppink);
+    border-radius: 5px;
+    padding: 5px ;
+    text-align: right;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 25px rgba(0,0,0,.2);
+    transform: perspective(1000px) rotateY(180deg);
+    transition: transform .4s ease-out;
+}
+.contain .card-contain .back .stripe{
+    background: #000;
+    width: 100%;
+    margin: 10px 0;
+    height: 50px;
+}
+.contain .card-contain .back .box{
+    padding:10px;
+}
+.contain .card-contain .back .box span{
+    color: #fff;
+    font-size: 15px;
+}
+.contain .card-contain .back .box .cvv-box{
+    height: 50px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 5px;
+    color: #333;
+    background: #fff;
+    border-radius: 5px;
+    width: 100%;
+}
+.contain .card-contain .back .box img{
+    margin-top: 30px;
+    height: 30px;
+}
+.flexOnsmallphone{
+    display: flex;
+    gap: 10px;
+    width: 65%;
+}
+@media (max-width:600PX) {
+    *{
+        overflow-y: scroll;
+        box-shadow: none !important;
+    }
+    .contain{
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        width: 105%;
+        background: white;
+    }
+    .contain form{
+        width: 100%;
+    }
+    .contain .card-contain{
+        width: 100%;
+        height: 230px;
+        font-size: 15px;
+        text-align: center;
+    }
+    .contain .card-contain .front{
+        padding: 0px;
+        border-radius: 0%;
+    }
+    .flexOnsmallphone{
+        display: flex;
+        width: 100%;
+    }
+    .contain form .flexbox{
+        display: block;
+    }
+    .cover div{
+        width: 90%;
+        top: 50%;
+    }
+    .cover div div{
+        top: 50%;
+        height: 50%;
+        height: 50%;
+    }
+    .cover div div button{
+        width: 100%;
+        margin-top: 10px;
+    }
+    ::-webkit-scrollbar{
+        width:1px;
+    }
+    ::-webkit-scrollbar-track{
+        background: transparent;
+    }
+    ::-webkit-scrollbar-thumb{
+        background: transparent;
+    }
+    /* ::-webkit-scrollbar-thumb:hover{
+        background: transparent;
+    } */
+}

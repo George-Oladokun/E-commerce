@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap-5.2.2-dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body id="body">
+    <button onclick="caught()" id="changing">Topics</button>
+    <div id="div"></div>
+
+    <div id="round" class="round bg-light shado">
+        <div id="circle" class="circle" onclick="move()"></div>
+    </div>
+    <style>
+        .round{
+            margin-top: 30px;
+            width: 40px;
+            height: 20px;
+            border-radius:10px ;
+            border: 1px solid;
+        }
+        .round2{
+            width: 25px;
+            height: 25px;
+            position: relative;
+            top: -4px;
+            border-radius: 100px;
+            translate: 15px;
+            transition: 0.5s;
+            background-color: white;
+            border: 1px solid gray;
+        }
+        .circle{
+            width: 25px;
+            height: 25px;
+            position: relative;
+            top: -4px;
+            border-radius: 100px;
+            background-color: navy;
+            transition: 0.5s;
+        }
+    </style>
+    <script>
+        const caught=()=>{
+            if(changing.innerHTML=="Topics"){
+                document.getElementById('div').setAttribute("class","Topics")
+                div.innerHTML="My class is Topics"
+                console.log(document.getElementById('div'));
+                changing.innerHTML="Tittle"
+            }
+            else if(changing.innerHTML=="Tittle"){
+                document.getElementById('div').setAttribute("class","Tittle")
+                console.log(document.getElementById('div'));
+                div.innerHTML="My class is Tittle"
+                changing.innerHTML="Topics"
+            }
+        }
+        let moving="right"
+        const move=()=>{
+            if(moving=="right"){
+                document.getElementById('circle').className="round2 shadow"
+                moving="left"
+                body.style.backgroundColor="navy"
+                body.style.transition=0.5+"s"
+            }
+            else if(moving=="left"){
+                document.getElementById('circle').className="circle shadow"
+                moving="right"
+                body.style.backgroundColor="white"
+                body.style.transition=0.5+"s"
+            }
+        }
+    </script>
+</body>
+</html>

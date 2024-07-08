@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap-5.2.2-dist/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="./checkout.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="shadow p-3 imgBox">
+            <div class="">
+                <div id="dispProduct" class="mx-auto" style="display: flex; justify-content: center;"></div>
+                <div class="d-flex quant" style="width: 35%; margin: auto; margin-top: -10px;">
+                    <p style="padding-top: 10px;">Quantity</p>
+                    <div id="quantity"></div>
+                </div>
+            </div>
+        </div>
+        <div class="shadow deliveringBox p-2">
+            <p class="fw-bold" style="border-bottom: 1px solid #333; height: 40px;">DELIVERY AND RETURN</p>
+            <div>
+                <select name="" id="" style="background: rgba(128, 128, 128, 0.56);" class="select">
+                    <option value="" selected disabled>Nigeria</option>
+                </select><br>
+                <select name="states" style="border-bottom: 1px solid #333;" class="select" id="state">
+                    <option value="" selected disabled>Select a state</option>
+                    <option value="Abia">Abia</option>
+                    <option value="Adamawa">Adamawa</option>
+                    <option value="Akwa Ibom">Akwa Ibom</option>
+                    <option value="Anambra">Anambra</option>
+                    <option value="Bauchi">Bauchi</option>
+                    <option value="Bayelsa">Bayelsa</option>
+                    <option value="Benue">Benue</option>
+                    <option value="Borno">Borno</option>
+                    <option value="Cross River">Cross River</option>
+                    <option value="Delta">Delta</option>
+                    <option value="Ebonyi">Ebonyi</option>
+                    <option value="Edo">Edo</option>
+                    <option value="Ekiti">Ekiti</option>
+                    <option value="Enugu">Enugu</option>
+                    <option value="Gombe">Gombe</option>
+                    <option value="Imo">Imo</option>
+                    <option value="Jigawa">Jigawa</option>
+                    <option value="Kaduna">Kaduna</option>
+                    <option value="Kano">Kano</option>
+                    <option value="Katsina">Katsina</option>
+                    <option value="Kebbi">Kebbi</option>
+                    <option value="Kogi">Kogi</option>
+                    <option value="Kwara">Kwara</option>
+                    <option value="Lagos">Lagos</option>
+                    <option value="Nasarawa">Nasarawa</option>
+                    <option value="Niger">Niger</option>
+                    <option value="Ogun">Ogun</option>
+                    <option value="Ondo">Ondo</option>
+                    <option value="Osun">Osun</option>
+                    <option value="Oyo">Oyo</option>
+                    <option value="Plateau">Plateau</option>
+                    <option value="Rivers">Rivers</option>
+                    <option value="Sokoto">Sokoto</option>
+                    <option value="Taraba">Taraba</option>
+                    <option value="Yobe">Yobe</option>
+                    <option value="Zamfara">Zamfara</option>
+                </select>
+
+            </div>
+            <div style="padding-top: 10px;">
+                <div class="d-flex">
+                    <div style="width: 20%;">
+                        <p class="icon"><i class="ri-truck-line icon"></i></p>
+                    </div>
+                    <div style="width: 70%;">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt, nulla!</p>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div style="width: 20%;">
+                        <p class="icon"><i class="ri-road-map-line icon"></i></p>
+                    </div>
+                    <div style="width: 70%;">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt, nulla!</p>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div style="width: 20%;">
+                        <p class="icon"><i class="ri-arrow-left-circle-line icon"></i></p>
+                    </div>
+                    <div style="width: 70%;">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt, nulla!</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="button" id="submit">
+                    <div class="spread" id="coverBtn"></div>
+                    <p class="buy">Check out</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cover" id="cover" onclick="goOver()">
+        <div class="message shadow" id="message">
+
+            <div style="position: absolute;left: 50%; top: 50%; transform: translate(-50%, -50%); " class="messageText">
+                <p class="" style="text-align: center;">We recommend you to go over the address details you have fill
+                </p>
+
+                <div class="d-flex" style="justify-content: center;">
+                    <button class="btn btn-success" style="margin-left: 5px;" onclick="goOver()">Go over</button>
+                    <button class="btn btn-danger" style="margin-left: 5px;" id="proceed">Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        let getBack = JSON.parse(localStorage.getItem('Eachuser'))
+        let index = localStorage.getItem('myIndex')
+        console.log(getBack[index].eachCart);
+
+        getBack[index].eachCart.map((product) => {
+            dispProduct.innerHTML = `
+        <div>
+        <div>
+            ${product.image}
+        </div>
+        <div style="padding-top:20px">
+            <h4>${product.description}</h4>
+        </div>
+        </div>
+        `
+
+
+        })
+
+
+        getBack[index].eachCart.map((productQuantity) => {
+            var select = document.createElement("select");
+
+            for (var i = 1; i <= productQuantity.unitAdd; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                select.appendChild(option);
+            }
+            document.getElementById('quantity').appendChild(select);
+
+            document.getElementById('submit').onclick = () => {
+                if (state.value == "") {
+                    alert("Fill the address details")
+                }
+                else {
+                    alert
+                    setTimeout(() => {
+                        cover.style.display = "block"
+                        document.getElementById('cover').className = "cover"
+                        document.getElementById('message').className = "message"
+                    }, 100);
+
+                }
+
+                document.getElementById('coverBtn').style.width = "100%"
+                document.getElementById('coverBtn').style.background = "linear-gradient(40deg, blueviolet, deeppink)"
+                getBack[index].eachCart.map((product) => {
+                })
+            }
+
+            document.getElementById('proceed').onclick = () => {
+                let totalPrice = select.value * productQuantity.price
+                getBack[index].oneproductPrice = Number(totalPrice)
+                getBack[index].address = state.value
+                console.log(getBack[index].oneproductPrice);
+                localStorage.setItem('Eachuser', JSON.stringify(getBack))
+                setTimeout(() => {
+                    window.location.href="realcard.html"
+                }, 550);
+            }
+        })
+
+        document.getElementById('submit').onmouseleave = () => {
+            document.getElementById('coverBtn').style.width = "0%"
+            document.getElementById('coverBtn').style.background = "linear-gradient(40deg, blueviolet, deeppink)"
+
+        }
+        const goOver = () => {
+            document.getElementById('cover').className = "cover2"
+            document.getElementById('message').className = "message2"
+            //   setTimeout(() => {
+            //     cover.style.display="none"       
+            //     },100);
+        }
+    </script>
+</body>
+
+</html>

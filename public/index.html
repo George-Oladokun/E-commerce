@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap-5.2.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./sign.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container p-4 shadow mt-4" style="border: 3px solid rgba(0, 0, 128, 0.189);">
+        <div class="d-flex">
+            <div class="d-flex logo">
+                <p class="title fs-1 tit1" style="color: navy;">E</p>
+                <p class="title fs-2 tit">COMMERCE</p>
+            </div>
+            <div style="position: relative; top: 35px;width: 170px;" class="hold">
+                <p class="fs-3" style="text-align: end; margin-top: 25px; color: navy;">Sign In</p>
+
+            </div>
+        </div>
+        <div class="pad">
+            <div class="class" style="justify-content: space-between;">
+                <div class="inputBox">
+                    <input type="text" required="required" id="mail">
+                    <span>Phone number</span>
+                    <i></i>
+                </div>
+                <div class="inputBox">
+                    <input type="password" required="required" id="pass" class="inp">
+                    <span>Password</span>
+                    <i></i>
+                </div>
+            </div>
+            <div class="" style="position: relative; top: 15px; justify-content: space-between; width: 220px;">
+                <span id="completMode">Already have account</span><span onclick="log()"
+                    style="color: navy; font-weight: 1000; cursor: pointer; position: relative; left: 4px;"
+                    id="modeChanger">Log in</span>
+            </div>
+            <div class="d-flex btn-div" style="justify-content: space-between;">
+                <button class="btn btn1 mt-4 btn-dark" onclick="submit()" id="signBtn">Sign up</button>
+                <!-- <button class="btn btn1 mt-4 btn-dark" onclick="logIn()">Log in</button> -->
+            </div>
+            <div class="d-flex mt-3">
+                <div style="border: 1px solid navy; height: 0px; width: 100%;position: relative; top: 15px;"></div>
+                <p
+                    style="height: 35px; width: 80px; border-radius: 1000px; background-color: navy; color: white;text-align: center; font-weight: 1000;position: relative;padding-top: 3px;">
+                    or</p>
+                <div style="border: 1px solid navy; height: 0px; width: 100%;position: relative; top: 15px;"></div>
+            </div>
+            <button id="signUpwithGoogle" class="btn btnn btn-dark">Sign in google</button>
+        </div>
+    </div>
+    <a href="./sign"></a>
+    
+    <script>
+        var allUser = []
+        // // Import the functions you need from the SDKs you need
+        // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+        // import { getAuth, signInWithPopup, GoogleAuthProvider, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+        // // TODO: Add SDKs for Firebase products that you want to use
+        // // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // // Your web app's Firebase configuration
+        // const firebaseConfig = {
+        //     apiKey: "AIzaSyBULpuSuhp9NR_4BxvUAQmYXgM_5QNSWl8",
+        //     authDomain: "amirixs.firebaseapp.com",
+        //     projectId: "amirixs",
+        //     storageBucket: "amirixs.appspot.com",
+        //     messagingSenderId: "205625926314",
+        //     appId: "1:205625926314:web:888b935bff568969df66d3"
+        // };
+
+        // // Initialize Firebase
+        // initializeApp(firebaseConfig);
+        // const provider = new GoogleAuthProvider()
+        // const auth = getAuth()
+        // document.getElementById('signUpwithGoogle').addEventListener('click', () => {
+        //     signInWithPopup(auth, provider)
+        //         .then((result) => {
+        //             let name = result.user
+        //             console.log(name);
+        //             sendEmailVerification(auth.currentUser)
+        //                 .then(() => {
+        //                     console.log("email sent");
+        //                 })
+        //                 .catch((err) => {
+        //                     console.log(err);
+        //                 })
+        //             window.location.href = "realdashboard.html"
+        //         })
+        // })
+
+
+        if (localStorage.Eachuser) {
+            var getAlluser = JSON.parse(localStorage.getItem('Eachuser'))
+        }
+        if (localStorage.Eachuser) {
+            let getBck = JSON.parse(localStorage.getItem('Eachuser'))
+            allUser = getBck
+            console.log(getBck);
+        }
+        const submit = () => {
+
+            if (signBtn.innerHTML == "Sign up") {
+                if (mail.value == "") {
+                    alert("Your phoneNumber cant be empty")
+                }
+                if (pass.value == "") {
+                    alert("You have to set your login password for security purpose")
+                }
+                else {
+                    let confimation = false
+                    if (localStorage.Eachuser) {
+                        for (let index = 0; index < getAlluser.length; index++) {
+                            if (mail.value == getAlluser[index].phoneNumber) {
+                                confimation = true
+                            }
+                        }
+                    }
+                    if (confimation == true) {
+                        alert("This Number have been sign up before proceed to login")
+                    }
+                    else {
+                        let eachUser = {
+                            phoneNumber: mail.value,
+                            password: pass.value,
+                            cart: [],
+                            eachCart:"",
+                            Img: "",
+                            Price: Number(),
+                            oneproductPrice:Number(),
+                            address:""
+                        }
+                        alert("Account created proceed to log in by clicking the login")
+                        window.location.href = "index.html"
+                        allUser.push(eachUser)
+                        localStorage.setItem("Eachuser", JSON.stringify(allUser))
+                    }
+                }
+            }
+            else if (signBtn.innerHTML == "Log in") {
+                let found = false
+                for (let index = 0; index < getAlluser.length; index++) {
+                    if (mail.value == getAlluser[index].phoneNumber && pass.value == getAlluser[index].password) {
+                        found = true
+                        localStorage.setItem('myIndex', index)
+                    }
+                }
+                if (found == true) {
+                    alert("Found")
+                    window.location.href = "realdashboard.html"
+                }
+                else {
+                    alert("User not found")
+
+                }
+            }
+        }
+        const log = () => {
+            if (modeChanger.innerHTML == "Log in") {
+                signBtn.innerHTML = "Log in"
+                modeChanger.innerHTML = "Sign up"
+                completMode.innerHTML = "Dont have account"
+            }
+            else if (modeChanger.innerHTML == "Sign up") {
+                signBtn.innerHTML = "Sign up"
+                completMode.innerHTML = "Already have account"
+                modeChanger.innerHTML = "Log in"
+            }
+        }
+    </script>
+</body>
+
+</html>

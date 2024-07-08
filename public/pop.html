@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="open-popup">Open Pop-up</button>
+
+    <div id="modal-overlay"></div>
+
+    <div id="modal">
+      <h2>Sign up for our newsletter</h2>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+
+        <input type="submit" value="Sign up">
+      </form>
+      <button id="close-popup">Close</button>
+    </div>
+    <style>
+        #modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1;
+}
+
+#modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+}
+
+#modal.show {
+  opacity: 1;
+}
+
+#close-popup {
+  display: block;
+  margin-top: 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+    </style>
+    <script>
+        const openPopupButton = document.getElementById('open-popup');
+const closePopupButton = document.getElementById('close-popup');
+const modalOverlay = document.getElementById('modal-overlay');
+const modal = document.getElementById('modal');
+
+// Open the pop-up when the "Open Pop-up" button is clicked
+openPopupButton.addEventListener('click', function() {
+  modalOverlay.style.display = 'block';
+  setTimeout(function() {
+    modal.classList.add('show');
+  }, 100);
+});
+
+// Close the pop-up when the "Close" button is clicked
+closePopupButton.addEventListener('click', function() {
+  modal.classList.remove('show');
+  setTimeout(function() {
+    modalOverlay.style.display = 'none';
+  }, 300);
+});
+
+// Close the pop-up when the user clicks outside of the pop-up
+window.addEventListener('click', function(event) {
+  if (event.target === modalOverlay) {
+    modal.classList.remove('show');
+    setTimeout(function() {
+      modalOverlay.style.display = 'none';
+    }, 300);
+  }
+});
+
+    </script>
+</body>
+</html>
